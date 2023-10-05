@@ -1,5 +1,5 @@
 const TeacherData = require('@models/Teacher');
-const { loadBalancer, SYSTEM_TOKEN,student } = require('@config');
+const { loadBalancer, SYSTEM_TOKEN ,student} = require('@config');
 const axios = require('axios');
 
 const updateTeacherStatus = async (teacherId, teacherData) => {
