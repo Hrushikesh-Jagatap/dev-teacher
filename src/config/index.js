@@ -20,7 +20,6 @@ const REFRESH_TOKEN_EXPIRESIN = AccessEnv('REFRESH_TOKEN_EXPIRESIN');
 
 const LOAD_BALANCER = AccessEnv('LOAD_BALANCER');
 const student = AccessEnv('student');
-
 const SYSTEM_TOKEN = AccessEnv('SYSTEM_TOKEN');
 
 // const QUEUE_URL = AccessEnv('QUEUE_URL');
