@@ -11,6 +11,7 @@ const TeacherDetailsById = require('./TeacherDetailsById') // done
 const UpdateTeacherById = require('./UpdateTeacherById'); // done
 
 // const NotificationRoute = require('./Notification');
+const splash = require('./splashApi')
 
 const deleteTeacherById = require('./DeleteTeacherById')
 
@@ -32,7 +33,8 @@ const serachbystatus = require("./serachbystatus") // student who do request
 
 const search = require('./searchApi') // this is api for searching all teacher whose subject class and lang anyone is matching
 
-
+// Route to use Splash Api
+router.use('/', splash)
 
 
 // Route to get all teachers
