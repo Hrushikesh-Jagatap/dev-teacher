@@ -33,6 +33,21 @@ const serachbystatus = require("./serachbystatus") // student who do request
 
 const search = require('./searchApi') // this is api for searching all teacher whose subject class and lang anyone is matching
 
+
+
+const PersonalDetails = require('./PersonalDetails');
+const TeachingDetails = require('./TeachingDetails');
+const EductaionalDetails = require('./EducationalDetails');
+const BankDetails = require('./BankDetails');
+//route to updated PersonalDetails By UserId
+router.use('/', PersonalDetails)
+// route to update Teaching Details By UserId
+router.use('/', TeachingDetails);
+// router to use update EductionalDetails By UserId
+router.use('/', EductaionalDetails);
+//route to use BankDetails By UserId
+router.use('/', BankDetails);
+
 // Route to use Splash Api
 router.use('/', splash)
 
