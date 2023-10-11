@@ -12,7 +12,7 @@ const searchTeacher = async (query) => {
         if (lang) filter.push({ "teaching_languages": { $in: [lang] } });
 
         const results = await Teacher.find({ $or: filter })
-            .select("userId teacher_id first_name last_name profileImage aboutUs address teaching_mode subjects_taught qualifications experience teaching_languages demo_video")
+             .select("userId teacher_id personalDetails teachingDetails educationDetails")
             .exec();
 
         return results;
