@@ -74,3 +74,4 @@
         "@common": "src/common",
         "@ErrorHandler": "src/common/libs/ErrorHandler"
     }
+}
