@@ -47,6 +47,7 @@ const teacherSchema = new mongoose.Schema({
     subjects_taught: [{
       subject: String,
       class: String,
+       target_exam: [String],
     }],
 
     batch_taught: [
