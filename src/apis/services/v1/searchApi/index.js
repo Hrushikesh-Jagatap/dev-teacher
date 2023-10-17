@@ -1,26 +1,37 @@
-const Teacher = require('@models/Teacher');
+const TeacherData = require('@models/Teacher');
 
 const searchTeacher = async (query) => {
-    try {
-        const { subject, lang, className, mode } = query;
+  try {
+    const { mode, subject, className, lang } = query;
 
-        const filter = []
+    const filter = {};
 
-        if (subject) filter.push({ "subjects_taught.subject": subject });
-        if (className) filter.push({ "subjects_taught.class": className });
-        if (mode) filter.push({ "teaching_mode": mode });
-        if (lang) filter.push({ "teaching_languages": { $in: [lang] } });
-
-        const results = await Teacher.find({ $or: filter })
-             .select("userId teacher_id personalDetails teachingDetails educationDetails")
-            .exec();
-
-        return results;
-    } catch (error) {
-        throw new Error('Failed to get teachers');
+    if (mode) {
+      filter["teachingDetails.teaching_mode"] = mode;
     }
+
+    if (subject) {
+      filter["teachingDetails.subjects_taught.subject"] = new RegExp(subject, 'i');
+    }
+
+    if (className) {
+      filter["teachingDetails.subjects_taught.class"] = new RegExp(className, 'i');
+    }
+
+    if (lang) {
+      filter["educationDetails.teaching_languages"] = new RegExp(lang, 'i');
+    }
+
+    const results = await TeacherData.find(filter)
+      .select("userId teacher_id personalDetails teachingDetails educationDetails")
+      .lean().exec();
+
+    return results;
+  } catch (error) {
+    throw new Error('Failed to find teachers');
+  }
 };
 
 module.exports = {
-    searchTeacher,
+  searchTeacher,
 };
