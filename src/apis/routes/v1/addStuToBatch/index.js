@@ -1,4 +1,4 @@
-onst Batch = require('@models/Batch');
+const Batch = require('@models/Batch');
 const TeacherData = require('@models/Teacher');
 // add  Student To Batch Service
 const addToBatch = async (userId, data) => {
