@@ -23,7 +23,7 @@ const searchTeacher = async (query) => {
     }
 
     const results = await TeacherData.find(filter)
-      .select("userId teacher_id personalDetails teachingDetails educationDetails")
+      .select("userId  personalDetails teachingDetails educationDetails")
       .lean().exec();
 
     return results;
