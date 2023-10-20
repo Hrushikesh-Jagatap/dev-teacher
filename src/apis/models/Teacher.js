@@ -6,10 +6,10 @@ const teacherSchema = new mongoose.Schema({
     type: String
   },
 
-  teacher_id: {
-    type: String,
-    unique: true
-  },
+  // teacher_id: {
+  //   type: String,
+  //   unique: true
+  // },
 
   personalDetails: { // personal Details ->
     first_name: String,
@@ -83,15 +83,16 @@ const teacherSchema = new mongoose.Schema({
 
   },
 
-  student_id: [{
-    student_id: String,
+  student_userId: [{
+    student_userId: String,
     subject: String,
     classes: String,
   }],
 
   req_status: [
     {
-      sid: String,
+      // sid: String,
+        sid_userId: String,
       status: String,
       about: String,
       subject: String,
