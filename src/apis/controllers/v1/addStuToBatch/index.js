@@ -1,4 +1,4 @@
-const BatchService = require('@root/src/apis/services/v1/addStuToBatch');
+const BatchService = require('@services/v1/addStuToBatch');
 const { HttpResponseHandler } = require('intelli-utility');
 //  add Batch To Student  controller
 const addToBatch = async (req, res, next) => {
