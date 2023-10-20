@@ -1,26 +1,15 @@
 const mongoose = require('mongoose');
 
-// Define the Batch schema
 const batchSchema = new mongoose.Schema({
+
+  userId: {
+    type: String,
+    ref: 'Teacher',
+  },
+
   batch_id: {
     type: String,
-    required: true,
-    unique: true,
-  },
-  batch_name: {
-    type: String,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  // teacher_Id: { 
-  //   type:String,
-  // },
-
-  userId: { 
-    type:String,
+    unique: true
   },
 
   // student_id: [{
@@ -28,36 +17,99 @@ const batchSchema = new mongoose.Schema({
   // }],
    student_userId: [{
     type: String,
+    default: null
   }],
-  lastdate: {
-    type: Date,
+
+  batch_name: {
+    type: String,
+    required: true
   },
+
+  className: {
+    type: String,
+    required: true,
+  },
+
+  Subject: {
+    type: String,
+    required: true,
+  },
+
+  Language: {
+    type: String,
+    required: true,
+  },
+
+  BatchStartDate: {
+    type: Date,
+    required: true,
+  },
+
+  BatchEndDate: {
+    type: Date,
+    required: true,
+  },
+
+  classDuration: {
+    type: String,
+    required: true,
+  },
+
   classTime: {
     type: String,
+    required: true,
   },
-  duration: {
+
+  numberOfChapters: {
     type: Number,
+    required: true,
   },
-  imageUrl: {
-    type: String,
-  },
-  syllabus: {
-    type: String,
-  },
-  chapter: {
-    type: String,
-  },
-  liveChat: {
-    type: Boolean,
-    default: true,
-  },
-  offlineChat: {
-    type: Boolean,
-    default: false,
-  },
+
+  chapters: [
+    {
+      Id: {
+        type: String,
+        deafult:null,
+        unique: true
+      },
+      name: {
+        type: String,
+        required: true,
+      },
+
+      status: {
+        type: Boolean,
+        default: false
+      },
+    },
+  ],
+
+  assignments: [
+    {
+      Id: {
+        type: String,
+        required: true,
+      },
+      name: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
+  exams: [
+    {
+      Id: {
+        type: String,
+        required: true,
+      },
+      name: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
 });
 
-// Create the Batch model
 const Batch = mongoose.model('Batch', batchSchema);
 
 module.exports = Batch;
