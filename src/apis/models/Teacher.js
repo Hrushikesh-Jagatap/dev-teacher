@@ -12,14 +12,23 @@ const teacherSchema = new mongoose.Schema({
   // },
 
   personalDetails: { // personal Details ->
+
     first_name: String,
+
     last_name: String,
+
     fathersName: String,
+
     dob: String,
+
     email: String,
+
     phone_number: String,
+
     profileImage: String,
+
     aboutUs: String,
+
     secondaryMobileNumber: String,
 
     address: {
@@ -33,7 +42,7 @@ const teacherSchema = new mongoose.Schema({
         latitude: String,
       },
     },
-},
+  },
 
   isProfileCompleted: {
     type: Boolean,
@@ -42,25 +51,32 @@ const teacherSchema = new mongoose.Schema({
 
   teachingDetails: { // Teaching Details
 
-    teaching_mode: String,
+    teaching_mode:
+    {
+      type: String,
+      default: null,
+    },
 
     subjects_taught: [{
       subject: String,
       class: String,
-       target_exam: [String],
+      target_exam: [String],
     }],
 
     batch_taught: [
       {
-        batch_id: String,
-        batch_name: String,
-        batch_grade: String,
-        batch_duration: String,
-        batch_startDate: Date,
-        batch_endDate: Date,
-        batch_startTime: String,
-        batch_endTime: String,
-        students: [String],
+        batch_id: {
+          type: String,
+          default: null
+        },
+        batch_name: {
+          type: String,
+          default: null
+        },
+        bath_class: {
+          type: String,
+          default: null
+        }
       },
     ],
 
@@ -126,7 +142,7 @@ const teacherSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
-  
+
   bankDetails: { // Bank Details
 
     payment: {
