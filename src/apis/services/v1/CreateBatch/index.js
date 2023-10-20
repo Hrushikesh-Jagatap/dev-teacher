@@ -1,4 +1,4 @@
-/  Batch model
+//  Batch model
 const Batch = require('@models/Batch');
 const Chapter = require('@models/Chapter');
 const { v4: uuidv4 } = require('uuid');
