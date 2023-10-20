@@ -15,15 +15,18 @@ const batchSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  teacher_Id: { 
-    type:String,
-  },
+  // teacher_Id: { 
+  //   type:String,
+  // },
 
   userId: { 
     type:String,
   },
 
-  student_id: [{
+  // student_id: [{
+  //   type: String,
+  // }],
+   student_userId: [{
     type: String,
   }],
   lastdate: {
