@@ -1,4 +1,4 @@
-// services/sessionService.js
+// services/chapterService.js
 const Chapter = require('@models/Chapter');
 const updateChapter = async (chapterId, updatedChapterData) => {
     try {
