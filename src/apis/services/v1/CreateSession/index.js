@@ -1,5 +1,5 @@
 const sessionDb = require('@models/Session');
-conconst { createUUID } = require('@common/libs/UUID/UUIDV4');
+const { createUUID } = require('@common/libs/UUID/UUIDV4');
 const { addSessionToChapter } = require('@services/v1/updateChapter')
 // Service function to create a new session in  chapter
 const createSession = async (sessionData) => {
