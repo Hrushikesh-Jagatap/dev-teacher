@@ -34,18 +34,20 @@ const chapterSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    session: [{
-        Id: {
-            type: String,
-            ref: 'Session',
-            default: null
-        },
-        name: {
-            type: String,
-            ref: 'Session',
-            default: null
-        }
-    }]
+    // session: [{
+    //     Id: {
+    //         type: String,
+    //         ref: 'Session',
+    //         default: null
+    //     },
+    //     name: {
+    //         type: String,
+    //         ref: 'Session',
+    //         default: null
+    //     }
+    // }]
+     session: []
+
 });
 const Chapter = mongoose.model('Chapter', chapterSchema);
 module.exports = Chapter;
