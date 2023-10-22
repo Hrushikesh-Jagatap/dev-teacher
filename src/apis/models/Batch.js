@@ -15,7 +15,7 @@ const batchSchema = new mongoose.Schema({
   // student_id: [{
   //   type: String,
   // }],
-   student_userId: [{
+  student_userId: [{
     type: String,
     default: null
   }],
@@ -65,24 +65,25 @@ const batchSchema = new mongoose.Schema({
     required: true,
   },
 
-  chapters: [
-    {
-      Id: {
-        type: String,
-        deafult:null,
-        unique: true
-      },
-      name: {
-        type: String,
-        required: true,
-      },
+  // chapters: [
+  //   {
+  //     Id: {
+  //       type: String,
+  //       deafult:null,
+  //       unique: true
+  //     },
+  //     name: {
+  //       type: String,
+  //       required: true,
+  //     },
 
-      status: {
-        type: Boolean,
-        default: false
-      },
-    },
-  ],
+  //     status: {
+  //       type: Boolean,
+  //       default: false
+  //     },
+  //   },
+  // ],
+  chapters: [],
 
   assignments: [
     {
