@@ -19,6 +19,7 @@ const sessionSchema = new mongoose.Schema({
     chapter_id: {
         type: String,
         ref: 'Chapter',
+        required: true,
         default: null
     },
     sessionName: {
