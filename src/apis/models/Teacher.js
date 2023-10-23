@@ -159,6 +159,27 @@ const teacherSchema = new mongoose.Schema({
       default: { "upiInfo": [] }
     },
   },
+
+  ApplicationStatus: {
+    isPersonalDetailsCompleted: {
+      type: Boolean,
+      default: false
+    },
+    isEducationalDetailCompleted: {
+      type: Boolean,
+      default: false
+    },
+    isbankDetailsCompleted: {
+      type: Boolean,
+      default: false,
+    },
+    isTeachingDetailsCompleted: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  
 }, { timestamps: { createdAt: true, updatedAt: true }, versionKey: false });
 
 const TeacherData = mongoose.model('TeacherData', teacherSchema);
