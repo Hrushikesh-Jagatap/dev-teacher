@@ -61,7 +61,8 @@ router.use('/', getSessionDetails);
 // route to updated session
 
 const profileCompleted = require('./profileCompleted');
-router.use('/', profileCompleted
+router.use('/', profileCompleted);
+
 // route to add student to batch
 router.use('/', addStuToBatch); 
 
