@@ -55,6 +55,11 @@ const updateSession = require('./updateSession');
 
 router.use('/', updateSession);
 
+const getSessionDetails = require('./getSessionDetails');
+// roue to get Session Details
+router.use('/', getSessionDetails);
+// route to updated session
+
 // route to add student to batch
 router.use('/', addStuToBatch); 
 
@@ -70,6 +75,7 @@ router.use('/', updateChapter);
 router.use('/', getChapterById);
 //route to updated PersonalDetails By UserId
 router.use('/', PersonalDetails)
+router.use('/', serachbystatus)
 
 // route to update Teaching Details By UserId
 router.use('/', TeachingDetails);
