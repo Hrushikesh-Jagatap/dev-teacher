@@ -6,9 +6,9 @@ const getBatchByStudentId = async (req, res, next) => {
     try {
         const student = await BatchService.getBatchByStudentId(req.params.id);
         if (!student) {
-            return HttpResponseHandler.success(req, res, batch);
+            return HttpResponseHandler.success(req, res, student);
         }
-        return HttpResponseHandler.success(req, res, batch);
+        return HttpResponseHandler.success(req, res, student);
         
     } catch (error) {
         next(error);
