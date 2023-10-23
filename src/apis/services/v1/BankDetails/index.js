@@ -16,10 +16,16 @@ const updateBankDetailsById = async (userId, updateBankDetails) => {
 
     const updatedTeacher = await TeacherData.findOneAndUpdate(
       { userId },
-      { $set: { bankDetails: mergedBankDetails } },
+         { $set: { bankDetails: mergedBankDetails ,  "ApplicationStatus.isbankDetailsCompleted": true} },
       { new: true }
     );
-    return updatedTeacher;
+    if(updatedTeacher) {
+educationDetails
+      const { bankDetails, ApplicationStatus } = updatedTeacher
+      return { bankDetails, ApplicationStatus };
+    } else {
+      throw new Eroor('Failed to update BankDetails of  Teacher')
+    }
   } catch (error) {
     throw new Error('Failed to update BankDetails');
   }
