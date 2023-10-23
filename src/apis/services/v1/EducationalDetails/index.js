@@ -12,14 +12,19 @@ const updateEducationalDetailsById = async (userId, updateEducationalDetails) =>
     }
 
     const mergedEducationalDetails = _.merge({}, user.educationDetails, updateEducationalDetails);
+    mergedEducationalDetails.teaching_languages = updateEducationalDetails.teaching_languages;
 
     const updatedTeacher = await TeacherData.findOneAndUpdate(
       { userId },
-      { $set: { educationDetails: mergedEducationalDetails } },
+       { $set: { educationDetails: mergedEducationalDetails, "ApplicationStatus.isEducationalDetailCompleted": true } },
       { new: true }
     );
-    return updatedTeacher;
-  } catch (error) {
+ if (updatedTeacher) {
+      const { educationDetails, ApplicationStatus } = updatedTeacher
+      return { educationDetails, ApplicationStatus };
+    } else {
+      throw new Eroor('Failed to update educationDetails Teacher')
+    }  } catch (error) {
     throw new Error('Failed to update EducationalDetails');
   }
 };
