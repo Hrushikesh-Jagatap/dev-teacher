@@ -1,53 +1,49 @@
 const mongoose = require('mongoose');
+
 const chapterSchema = new mongoose.Schema({
+
     chapter_id: {
         type: String,
-        unique: true,
-        default: null
+        // unique: true,
     },
+
     userId: {
         type: String,
-        ref: 'Teacher',
-        default: null
+        // ref: 'Teacher',
     },
+
     batch_id: {
         type: String,
-        ref: 'Batch',
-        required: true,
-        default: null
+        // ref: 'Batch',
+        // required: true,
     },
+
+
     name: {
         type: String,
         default: null
     },
+
     description: {
         type: String,
         default: null
     },
+    
     resources: [
         {
             type: String,
             default: null    // You can specify the appropriate type for resources, e.g., URL or file path
         },
     ],
+
     status: {
         type: Boolean,
         default: false
     },
-    // session: [{
-    //     Id: {
-    //         type: String,
-    //         ref: 'Session',
-    //         default: null
-    //     },
-    //     name: {
-    //         type: String,
-    //         ref: 'Session',
-    //         default: null
-    //     }
-    // }]
-     session: []
 
+    session: []
 });
+
 const Chapter = mongoose.model('Chapter', chapterSchema);
+
 module.exports = Chapter;
