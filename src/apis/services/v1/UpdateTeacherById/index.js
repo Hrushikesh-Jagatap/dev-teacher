@@ -9,7 +9,20 @@ const updateTeacherById = async (userId, teacherData) => {
     throw new Error('Failed to update teacher');
   }
 };
-
+const addBatchDetails = async (userId, BatchData) => {
+  try {
+    const teacher = await TeacherData.findOne({ userId });
+    const updateTeacher =  teacher.teachingDetails.batch_taught.push(BatchData);
+    await teacher.save();
+    if(!updateTeacher) {
+      return ('Error')
+    }
+    return BatchData;
+  } catch (error) {
+    throw new Error('Failed to update Batch Details in Teacher Database');
+  }
+}
 module.exports = {
   updateTeacherById,
+  addBatchDetails
 };
