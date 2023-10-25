@@ -73,7 +73,7 @@ const teacherSchema = new mongoose.Schema({
           type: String,
           default: null
         },
-        bath_class: {
+        batch_class: {
           type: String,
           default: null
         }
