@@ -4,8 +4,11 @@ const updateSession = async (sessionId, updatedSessionData) => {
     try {
         const { chapter_id } = updatedSessionData;
         const updatedSession = await Session.findOneAndUpdate({ session_id: sessionId }, updatedSessionData, { new: true });
-        if (!updatedSession) {
-            throw new Error('Session not found');
+      if (updatedSession === null) {
+            return {
+                status: 404,
+                message: 'Session not found',
+            };
         }
         return updatedSession;
     } catch (error) {
