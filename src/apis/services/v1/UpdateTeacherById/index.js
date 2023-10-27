@@ -4,6 +4,12 @@ const TeacherData = require('@models/Teacher');
 const updateTeacherById = async (userId, teacherData) => {
   try {
     const updatedTeacher = await TeacherData.findOneAndUpdate({ userId: userId }, teacherData);
+     if (updatedTeacher === null) {
+      return {
+          status: 404,
+          message: 'ERROR_WHILE_UPDATING',
+      };
+  }
     return updatedTeacher;
   } catch (error) {
     throw new Error('Failed to update teacher');
