@@ -6,9 +6,12 @@ const updateTeacherStatus = async (tid_userId, teacherData) => {
   try {
     const teacher = await TeacherData.findOne({ userId: tid_userId });
 
-    if (!teacher) {
-      throw new Error('Teacher not found');
-    }
+    if (teacher === null) {
+      return {
+          status: 404,
+          message: 'TEACHER_NOT_FOUND',
+      };
+  }
 
     const { sid_userId, status, about, subject, flag, classes } = teacherData;
     let existingStatus = teacher.req_status.find((reqStatus) => reqStatus.sid_userId == sid_userId);
