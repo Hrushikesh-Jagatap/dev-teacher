@@ -8,18 +8,21 @@ const updateBankDetailsById = async (userId, updateBankDetails) => {
 
     const user = await TeacherData.findOne({ userId: userId });
 
-    if (!user) {
-      return "User not found In Db"
+   if (user === null) {
+      return {
+        status: 404,
+        message: 'TEACHER_NOT_FOUND',
+      };
     }
 
     const mergedBankDetails = _.merge({}, user.bankDetails, updateBankDetails);
 
     const updatedTeacher = await TeacherData.findOneAndUpdate(
       { userId },
-         { $set: { bankDetails: mergedBankDetails ,  "ApplicationStatus.isbankDetailsCompleted": true} },
+      { $set: { bankDetails: mergedBankDetails, "ApplicationStatus.isbankDetailsCompleted": true } },
       { new: true }
     );
-    if(updatedTeacher) {
+    if (updatedTeacher) {
 
       const { bankDetails, ApplicationStatus } = updatedTeacher
       return { bankDetails, ApplicationStatus };
