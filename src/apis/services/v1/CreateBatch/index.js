@@ -20,14 +20,18 @@ const { userId } = batchData;
     };
     const addBatchDetailToTeacher = await addBatchDetails(userId, Batchdata)
     if(addBatchDetailToTeacher === 'Error') {
-      return ('Error while updating Batch Details in Teacher');
+     return {
+        status: 404,
+        message: 'Error while updating Batch Details in Teacher',
+      };
     }
     const createdBatches = await Batch.create(batchData);
 
-    if (!createdBatches) {
-
-           return 'Error while creating batch';
-
+    if (createdBatches === null) {
+      return {
+        status: 404,
+        message: 'ERROR_WHILE_CREATING_BATCH',
+      };
     }
     return createdBatches;
   } catch (error) {
