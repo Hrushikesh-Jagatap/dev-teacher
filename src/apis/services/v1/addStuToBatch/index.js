@@ -5,8 +5,11 @@ const addToBatch = async (userId, data) => {
     try {
         const studentIdToAdd = data.student_userId
         const user = await TeacherData.findOne({ userId: userId });
-        if (!user) {
-            return ('Teacher Does Not Exist');
+      if (user === null) {
+            return {
+                status: 404,
+                message: 'TEACHER_NOT_FOUND',
+            };
         }
         const { batch_id } = data;
         const batch = await Batch.findOne({ batch_id: batch_id });
