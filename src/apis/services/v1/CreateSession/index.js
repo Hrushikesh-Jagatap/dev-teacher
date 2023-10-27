@@ -16,7 +16,10 @@ const createSession = async (sessionData) => {
         const updateChapter = await addSessionToChapter(chapter_id, session_id)
 
         if (updateChapter === 'chapter not found') {
-            return ('Error while updating sessionId in chapter');
+            return {
+                status: 404,
+                message: 'Error while updating sessionId in chapter',
+            };
         }
 
         const newSession = await sessionDb.create(sessionData);
