@@ -11,6 +11,13 @@ const createTeacher = async (teacherData) => {
     // teacherData.teacher_id = teacher_id;
 
     const newTeacher = await TeacherData1.create(teacherData);
+
+     if (newTeacher === null) {
+      return {
+        status: 404,
+        message: 'Failed to create teacher',
+      };
+    }
     return newTeacher;
   } catch (error) {
     throw new Error('Failed to create teacher');
