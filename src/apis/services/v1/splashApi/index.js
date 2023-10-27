@@ -6,11 +6,12 @@ const getSplashData = async (userId) => {
   try {
     const user = await TeacherData.findOne({ userId: userId }).lean(); 
 
-     if (user === null) {
+    if (user === null) {
       return {
         status: 404,
         message: 'TEACHER_NOT_FOUND',
       };
+    }
 
 
     // const appVersions = await AppVersion.findOne({});
@@ -20,6 +21,7 @@ const getSplashData = async (userId) => {
       personalDetails: user?.personalDetails ?? {},
       // bankDetails: user?.bankDetails ?? {},
       educationDetails: user?.educationDetails ?? {},
+      // appVersions: appVersions ?? {},
       req_status:user?.req_status??{},
     };
 
@@ -33,3 +35,4 @@ const getSplashData = async (userId) => {
 module.exports = {
   getSplashData
 };
+
