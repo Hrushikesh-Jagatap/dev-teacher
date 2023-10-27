@@ -78,7 +78,7 @@ router.use('/', updateChapter);
 router.use('/', getChapterById);
 //route to updated PersonalDetails By UserId
 router.use('/', PersonalDetails)
-router.use('/', serachbystatus)
+// router.use('/', serachbystatus)
 
 // route to update Teaching Details By UserId
 router.use('/', TeachingDetails);
