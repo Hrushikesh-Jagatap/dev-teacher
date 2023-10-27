@@ -9,8 +9,11 @@ const createChapter = async (chapterData) => {
         chapterData.chapter_id = chapter_id;
         const { batch_id } = chapterData;
         const updateBatch = await addChapterToBatch(batch_id, chapter_id)
-        if(updateBatch === 'Batch not found') {
-            return ('Error while updating chapterId in Batch');
+      if (updateBatch === 'Batch not found') {
+            return {
+                status: 404,
+                message: 'Error while updating chapterId in Batch',
+            };
         }
 
         const newChapter = await chapterDb.create(chapterData);
