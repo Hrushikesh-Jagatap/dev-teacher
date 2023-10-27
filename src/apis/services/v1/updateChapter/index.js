@@ -3,8 +3,11 @@ const Chapter = require('@models/Chapter');
 const updateChapter = async (chapterId, updatedChapterData) => {
     try {
         const updatedChapter = await Chapter.findOneAndUpdate({ chapter_id: chapterId }, updatedChapterData, { new: true });
-        if (!updatedChapter) {
-            throw new Error('Error in updating Chapter');
+        if (updatedChapter === null) {
+            return {
+                status: 404,
+                message: 'Error in updating Chapte',
+            };
         }
         return updatedChapter;
     } catch (error) {
