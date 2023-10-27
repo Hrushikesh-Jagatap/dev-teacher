@@ -8,8 +8,11 @@ const updatedTeachingDetailsById = async (userId, updatedTeachingDetails) => {
 
     const user = await TeacherData.findOne({ userId: userId });
 
-    if (!user) {
-      return "User not found In Db"
+     if (user === null) {
+      return {
+        status: 404,
+        message: 'TEACHER_NOT_FOUND',
+      };
     }
 
     const mergedTeachingDetails = _.merge({}, user.teachingDetails, updatedTeachingDetails);
