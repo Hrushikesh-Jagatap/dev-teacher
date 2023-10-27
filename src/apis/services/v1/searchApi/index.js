@@ -26,6 +26,13 @@ const searchTeacher = async (query) => {
       .select("userId  personalDetails teachingDetails educationDetails")
       .lean().exec();
 
+      if (results === null) {
+        return {
+          status: 404,
+          message: 'NO_TEACHER_FOUND',
+        };
+      }
+    
     return results;
   } catch (error) {
     throw new Error('Failed to find teachers');
