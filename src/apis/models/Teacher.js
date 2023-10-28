@@ -156,6 +156,8 @@ const teacherSchema = new mongoose.Schema({
     {
       // sid: String,
       sid_userId: String,
+       name:String,
+        profileimage:String,
       status: String,
       about: String,
       subject: String,
