@@ -4,12 +4,7 @@ const TeacherData = require('@models/Teacher');
 const getUserById = async (userId) => {
     try {
       const teacher = await TeacherData.findOne({userId:userId});
-         if (teacher === null) {
-        return {
-          status: 404,
-          message: 'TEACHER_NOT_FOUND',
-        };
-      }
+        
       return teacher;
     } catch (error) {
       throw new Error('Failed to get teacher');
