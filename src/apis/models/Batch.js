@@ -88,6 +88,7 @@
 // const Batch = mongoose.model('Batch', batchSchema);
 
 // module.exports = Batch;
+
 const mongoose = require('mongoose');
 
 const batchSchema = new mongoose.Schema({
@@ -98,6 +99,10 @@ const batchSchema = new mongoose.Schema({
   batch_id: {
     type: String, // This should be generated on the backend, not provided by the frontend
     // unique: true, // Ensure batch IDs are unique
+  },
+
+  batch_mode: {
+    type: String,
   },
 
   classId: {
