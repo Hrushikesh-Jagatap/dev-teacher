@@ -52,7 +52,8 @@ const getChapterById = require('./getChapterById');
 const createSession = require('./CreateSession');
 
 const updateSession = require('./updateSession');
-
+const instancestatus = require('./instancestatus');
+const searchforinstance = require('./searchforinstance');
 router.use('/', updateSession);
 
 const getSessionDetails = require('./getSessionDetails');
@@ -131,5 +132,7 @@ router.use('/', updatestatus)
 router.use('/', search)
 
 router.use('/', serachbystatus)
+router.use('/', instancestatus)
+router.use('/', searchforinstance)
 
 module.exports = router;
