@@ -50,6 +50,7 @@ const createChapter = require('./CreateChapter'); // done
 const updateChapter = require('./updateChapter');
 const getChapterById = require('./getChapterById');
 const createSession = require('./CreateSession');
+const Getallteacher = require('./Getallteacher');
 
 const updateSession = require('./updateSession');
 const instancestatus = require('./instancestatus');
@@ -127,6 +128,7 @@ router.use('/', getBatchByStudentId)
 router.use('/', getBatchByBatchId)
 
 router.use('/', updatestatus)
+router.use('/', Getallteacher)
 
 //route to get teacher By class lang subj and mode
 router.use('/', search)
