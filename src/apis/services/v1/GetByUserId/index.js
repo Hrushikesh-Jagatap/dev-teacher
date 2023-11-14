@@ -3,7 +3,7 @@ const TeacherData = require('@models/Teacher');
 // Service function to get a single teacher by ID
 const getUserById = async (userId) => {
     try {
-      const teacher = await TeacherData.findOne({userId:userId});
+      const teacher = await TeacherData.find({userId:userId});
         
       return teacher;
     } catch (error) {
