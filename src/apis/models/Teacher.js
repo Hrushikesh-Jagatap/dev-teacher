@@ -100,10 +100,10 @@ const teacherSchema = new mongoose.Schema({
   teachingDetails: { // Teaching Details
 
     teaching_mode:
-    {
+    [{
       type: String,
       default: null,
-    },
+    }],
 
     subjects_taught: [{
       subject: String,
@@ -146,25 +146,121 @@ const teacherSchema = new mongoose.Schema({
     ],
 
   },
-OnlieTeachingDeatis:{
-    //  teaching_mode:
-    // {
-    //   type: String,
-    //   default: "online",
-    // },
+
+
+  OnlieTeachingDeatis:{
+  
+    availability:String,
    perhourcharge:String,
+    teaching_languages: [String],
+    teaching_mode:
+    {
+      type: String,
+      default: "Online",
+    },
+    subjects_taught: [{
+      subject: String,
+      class: String,
+      target_exam: [String],
+    }],
+
+    batch_taught: [
+      {
+        batch_id: {
+          type: String,
+          default: null
+        },
+        batch_name: {
+          type: String,
+          default: null
+        },
+        batch_class: {
+          type: String,
+          default: null
+        }
+      },
+    ],
+
+    qualifications: [
+      {
+        degree: String,
+        institution: String,
+        year: String,
+      },
+    ],
+
+    experience: [
+      {
+        school_name: String,
+        position: String,
+        start_date: String,
+        end_date: String,
+      },
+    ],
    
   },
-   OfflineTeachingDeatis:{
+  
+  
+  
+  
+  
+  OfflineTeachingDeatis:{
+     teaching_mode:
+    {
+      type: String,
+      default: "Offline",
+    },
+     teaching_languages: [String],
     availability:String,
    priceperdistancekm:String,
    pincode:[String],
+   subjects_taught: [{
+      subject: String,
+      class: String,
+      target_exam: [String],
+    }],
+
+    batch_taught: [
+      {
+        batch_id: {
+          type: String,
+          default: null
+        },
+        batch_name: {
+          type: String,
+          default: null
+        },
+        batch_class: {
+          type: String,
+          default: null
+        }
+      },
+    ],
+
+    qualifications: [
+      {
+        degree: String,
+        institution: String,
+        year: String,
+      },
+    ],
+
+    experience: [
+      {
+        school_name: String,
+        position: String,
+        start_date: String,
+        end_date: String,
+      },
+    ],
    
   },
   student_userId: [{
     student_userId: String,
     subject: String,
     classes: String,
+    name:String,
+    profileimage:String,
   }],
 
   req_status: [
@@ -243,10 +339,20 @@ OnlieTeachingDeatis:{
       default: false
     }
   },
- instance_status:{
+  Admin_Review:{
+    communication:String,
+    Teaching_skill:String,
+    flag:Boolean,
+    abc:String,
+    xyz:String,
+  },
+  instance_status:{
   status:Boolean,
  default:false,
- }
+  
+ 
+  }
+
 }, { timestamps: { createdAt: true, updatedAt: true }, versionKey: false });
 
 const TeacherData = mongoose.model('TeacherData', teacherSchema);
