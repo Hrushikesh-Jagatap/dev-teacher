@@ -55,6 +55,10 @@ const Getallteacher = require('./Getallteacher');
 const updateSession = require('./updateSession');
 const instancestatus = require('./instancestatus');
 const searchforinstance = require('./searchforinstance');
+
+const OnlieTeachingDeatis = require('./OnlieTeachingDeatis');
+const OfflineTeachingDeatis = require('./OfflineTeachingDeatis');
+
 router.use('/', updateSession);
 
 const getSessionDetails = require('./getSessionDetails');
@@ -136,5 +140,6 @@ router.use('/', search)
 router.use('/', serachbystatus)
 router.use('/', instancestatus)
 router.use('/', searchforinstance)
-
+router.use('/', OnlieTeachingDeatis)
+router.use('/', OfflineTeachingDeatis)
 module.exports = router;
