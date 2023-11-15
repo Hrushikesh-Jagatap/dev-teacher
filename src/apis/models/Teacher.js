@@ -146,7 +146,21 @@ const teacherSchema = new mongoose.Schema({
     ],
 
   },
-
+OnlieTeachingDeatis:{
+    //  teaching_mode:
+    // {
+    //   type: String,
+    //   default: "online",
+    // },
+   perhourcharge:String,
+   
+  },
+   OfflineTeachingDeatis:{
+    availability:String,
+   priceperdistancekm:String,
+   pincode:[String],
+   
+  },
   student_userId: [{
     student_userId: String,
     subject: String,
