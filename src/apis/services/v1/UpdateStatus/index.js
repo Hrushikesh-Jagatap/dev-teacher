@@ -44,16 +44,20 @@ const updateTeacherStatus = async (tid_userId, teacherData) => {
       // existingStatus.about = about;
     } else {
      const abc = await getStudent(sid_userId);
-    const name=abc.data.personalDetails.first_name ;
-    const profileimage=abc.data.personalDetails.profileImage;
+    const name=abc.data.personalDetails?.first_name ;
+    const profileimage=abc.data.personalDetails?.profileImage;
       
     teacher.req_status.push({ sid_userId, status, about, subject, flag, classes,name,profileimage});
     }
-
-    const updatedTeacher = await teacher.save();
+   
+  const updatedTeacher = await teacher.save();
     if (status == "Accepted") {
       // Push the new teacher data into the userId array
-      const newSeacherData = { student_userId: sid_userId, subject, classes };
+    const abc = await getStudent(sid_userId);
+    var name=abc.data.personalDetails?.first_name ;
+    var profileimage=abc.data.personalDetails?.profileImage;
+    const newSeacherData = { student_userId: sid_userId, subject, classes, name,profileimage };
+
       updatedTeacher.student_userId.push(newSeacherData);
       await updatedTeacher.save();
     }
