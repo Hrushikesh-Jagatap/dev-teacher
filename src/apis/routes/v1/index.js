@@ -68,6 +68,7 @@ router.use('/', getSessionDetails);
 
 const profileCompleted = require('./profileCompleted');
 router.use('/', profileCompleted);
+const completeSession = require('./completeSession');
 
 // route to add student to batch
 router.use('/', addStuToBatch); 
@@ -77,7 +78,7 @@ router.use('/', createSession);
 
 // route to create chapter content
 router.use('/', createChapter);
-
+router.use('/', completeSession);
 //route to use updated chapter
 router.use('/', updateChapter);
 //router to get chapter By Id
