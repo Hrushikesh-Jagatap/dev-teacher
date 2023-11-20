@@ -341,10 +341,14 @@ const teacherSchema = new mongoose.Schema({
   },
   Admin_Review:{
     communication:String,
+    admin_userid:String,
+    rating:String,
+    comment:String,
     Teaching_skill:String,
     flag:Boolean,
-    abc:String,
-    xyz:String,
+
+    // abc:String,
+    // xyz:String,
   },
   instance_status:{
   status:Boolean,
