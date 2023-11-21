@@ -39,7 +39,7 @@ const sessionSchema = new mongoose.Schema({
 
     mettingUrl: {
         type:String,
-        default:'myeduc.ddns.net'
+        default:'https://myeduc.ddns.net/RichWillingnessesTerrifySuccessfully'
     },
 
     ThumbNail: {
