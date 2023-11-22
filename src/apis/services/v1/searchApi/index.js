@@ -23,7 +23,7 @@ const searchOnlineTeachers = async (query) => {
   const { subject, className, lang } = query;
 
   const filter = {
-    "OnlieTeachingDeatis.teaching_mode": "online"
+    "OnlieTeachingDeatis.teaching_mode": "Online"
   };
 
   if (subject) {
@@ -49,7 +49,7 @@ const searchOfflineTeachers = async (query) => {
   const { subject, className, lang } = query;
 
   const filter = {
-    "OfflineTeachingDeatis.teaching_mode": "offline"
+    "OfflineTeachingDeatis.teaching_mode": "Offline"
   };
 
   if (subject) {
