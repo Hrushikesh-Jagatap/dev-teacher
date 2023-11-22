@@ -2,41 +2,73 @@ const TeacherData = require('@models/Teacher');
 
 const searchTeacher = async (query) => {
   try {
-    const { mode, subject, className, lang } = query;
+    const { mode } = query;
 
-    const filter = {};
-
-    if (mode) {
-      filter["teachingDetails.teaching_mode"] = mode;
+    if (mode === 'Online') {
+      return await searchOnlineTeachers(query);
+    } else if (mode === 'Offline') {
+      return await searchOfflineTeachers(query);
+    } else {
+      return {
+        status: 400,
+        message: 'INVALID_MODE',
+      };
     }
-
-    if (subject) {
-      filter["teachingDetails.subjects_taught.subject"] = new RegExp(subject, 'i');
-    }
-
-    if (className) {
-      filter["teachingDetails.subjects_taught.class"] = new RegExp(className, 'i');
-    }
-
-    if (lang) {
-      filter["educationDetails.teaching_languages"] = new RegExp(lang, 'i');
-    }
-
-    const results = await TeacherData.find(filter)
-      .select("userId  personalDetails teachingDetails educationDetails")
-      .lean().exec();
-
-      if (results === null) {
-        return {
-          status: 404,
-          message: 'NO_TEACHER_FOUND',
-        };
-      }
-    
-    return results;
   } catch (error) {
     throw new Error('Failed to find teachers');
   }
+};
+
+const searchOnlineTeachers = async (query) => {
+  const { subject, className, lang } = query;
+
+  const filter = {
+    "OnlieTeachingDeatis.teaching_mode": "online"
+  };
+
+  if (subject) {
+    filter["OnlieTeachingDeatis.subjects_taught.subject"] = new RegExp(subject, 'i');
+  }
+
+  if (className) {
+    filter["OnlieTeachingDeatis.subjects_taught.class"] = new RegExp(className, 'i');
+  }
+
+  if (lang) {
+    filter["educationDetails.teaching_languages"] = new RegExp(lang, 'i');
+  }
+
+  const onlineResults = await TeacherData.find(filter)
+    .select("userId personalDetails teachingDetails educationDetails OnlieTeachingDeatis OfflineTeachingDeatis")
+    .lean().exec();
+
+  return { onlineResults };
+};
+
+const searchOfflineTeachers = async (query) => {
+  const { subject, className, lang } = query;
+
+  const filter = {
+    "OfflineTeachingDeatis.teaching_mode": "offline"
+  };
+
+  if (subject) {
+    filter["OfflineTeachingDeatis.subjects_taught.subject"] = new RegExp(subject, 'i');
+  }
+
+  if (className) {
+    filter["OfflineTeachingDeatis.subjects_taught.class"] = new RegExp(className, 'i');
+  }
+
+  if (lang) {
+    filter["educationDetails.teaching_languages"] = new RegExp(lang, 'i');
+  }
+
+  const offlineResults = await TeacherData.find(filter)
+    .select("userId personalDetails teachingDetails educationDetails OnlieTeachingDeatis OfflineTeachingDeatis")
+    .lean().exec();
+
+  return { offlineResults };
 };
 
 module.exports = {
