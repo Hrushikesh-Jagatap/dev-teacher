@@ -2,90 +2,114 @@ const express = require('express');
 
 const router = express.Router();
 
-const TeacherDetails = require('./TeacherDetails'); // done
+const TeacherDetails = require('./TeacherDetails'); 
 
-const CreateTeacher = require('./CreateTeacher'); // done
+const CreateTeacher = require('./CreateTeacher'); 
 
-const TeacherDetailsById = require('./TeacherDetailsById') // done
+const TeacherDetailsById = require('./TeacherDetailsById') 
 
-const UpdateTeacherById = require('./UpdateTeacherById'); // done
+const UpdateTeacherById = require('./UpdateTeacherById'); 
 
-const deleteTeacherById = require('./DeleteTeacherById'); //done
+const deleteTeacherById = require('./DeleteTeacherById'); 
 
-const GetByuserId = require('./GetByUserId'); // done
+const GetByuserId = require('./GetByUserId'); 
 
-const PersonalDetails = require('./PersonalDetails'); // done
+const PersonalDetails = require('./PersonalDetails'); 
 
-const TeachingDetails = require('./TeachingDetails'); // done
+const TeachingDetails = require('./TeachingDetails'); 
 
-const EductaionalDetails = require('./EducationalDetails'); // done 
+const EductaionalDetails = require('./EducationalDetails'); 
 
-const BankDetails = require('./BankDetails'); // done
+const BankDetails = require('./BankDetails'); 
 
 const search = require('./searchApi') // this is api for searching all teacher whose subject class and lang anyone is matching
 
-const splash = require('./splashApi') // done
+const getSessionById = require('./getSessionById')
 
+const splash = require('./splashApi') 
 
-// const NotificationRoute = require('./Notification');
+const TeacherStudent = require('./TeacherStudent');
 
-const CreateBatch = require('./CreateBatch') // done
+const Notification = require('./Notification');
 
-const UpdateBatchByTeacherId = require('./UpdateBatchByTeacherId') // done 
+const CreateBatch = require('./CreateBatch') 
 
-const getBatchByBatchId = require('./getBatchByBatchId') // done
+const UpdateBatchByTeacherId = require('./UpdateBatchByTeacherId') 
 
-const getBatchByTeacherId = require('./getBatchByTeacherId') // done
+const getBatchByBatchId = require('./getBatchByBatchId') 
 
-const getBatchByStudentId = require("./getBatchByStudentId") // done 
+const getBatchByTeacherId = require('./getBatchByTeacherId')
+
+const getBatchByStudentId = require("./getBatchByStudentId") 
 
 const addStuToBatch = require('./addStuToBatch');
 
 const updatestatus = require("./updatestatus")
 
-const serachbystatus = require("./serachbystatus") // student who do request 
+const serachbystatus = require("./serachbystatus") 
 
-const createChapter = require('./CreateChapter'); // done 
+const createChapter = require('./CreateChapter'); 
 
 const updateChapter = require('./updateChapter');
+
 const getChapterById = require('./getChapterById');
+
 const createSession = require('./CreateSession');
-const Getallteacher = require('./Getallteacher');
 
 const updateSession = require('./updateSession');
-const instancestatus = require('./instancestatus');
-const searchforinstance = require('./searchforinstance');
-
-const OnlieTeachingDeatis = require('./OnlieTeachingDeatis');
-const OfflineTeachingDeatis = require('./OfflineTeachingDeatis');
-const AdminReviewDetails = require('./AdminReviewDetails');
-router.use('/', updateSession);
 
 const getSessionDetails = require('./getSessionDetails');
-// roue to get Session Details
-router.use('/', getSessionDetails);
-// route to updated session
 
 const profileCompleted = require('./profileCompleted');
-router.use('/', profileCompleted);
+
+const AdminReviewDetails = require('./AdminReviewDetails');
+
+const OnlieTeachingDeatis = require('./OnlieTeachingDeatis');
+
+const OfflineTeachingDeatis = require('./OfflineTeachingDeatis');
+
+const instancestatus = require('./instancestatus');
+
+const searchforinstance = require('./searchforinstance');
+
+const Getallteacher = require('./Getallteacher');
+
 const completeSession = require('./completeSession');
 
+router.use('/', getSessionById);
+
+// router.use('/', Notification);
+
+router.use('/', completeSession);
+
+//
+router.use('/', TeacherStudent);
+
+router.use('/', profileCompleted);
+
+// roue to get Session Details
+router.use('/', getSessionDetails);
+
+// route to updated session 
+router.use('/', updateSession);
+
 // route to add student to batch
-router.use('/', addStuToBatch); 
+router.use('/', addStuToBatch);
 
 // create session for every chapter
-router.use('/', createSession); 
+router.use('/', createSession);
 
 // route to create chapter content
 router.use('/', createChapter);
-router.use('/', completeSession);
+
 //route to use updated chapter
 router.use('/', updateChapter);
+
 //router to get chapter By Id
 router.use('/', getChapterById);
+
 //route to updated PersonalDetails By UserId
 router.use('/', PersonalDetails)
-// router.use('/', serachbystatus)
 
 // route to update Teaching Details By UserId
 router.use('/', TeachingDetails);
@@ -133,16 +157,22 @@ router.use('/', getBatchByStudentId)
 router.use('/', getBatchByBatchId)
 
 router.use('/', updatestatus)
-router.use('/', Getallteacher)
 
 //route to get teacher By class lang subj and mode
 router.use('/', search)
 
 router.use('/', serachbystatus)
-router.use('/', instancestatus)
-router.use('/', searchforinstance)
-router.use('/', OnlieTeachingDeatis)
-router.use('/', OfflineTeachingDeatis)
+
 router.use('/', AdminReviewDetails)
+
+router.use('/', OnlieTeachingDeatis)
+
+router.use('/', OfflineTeachingDeatis)
+
+router.use('/', instancestatus)
+
+router.use('/', searchforinstance)
+
+router.use('/', Getallteacher)
 
 module.exports = router;
