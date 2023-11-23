@@ -1,20 +1,11 @@
-const SessionData = require('@models/Session');
-const Session = require('@models/Session');
-const getSessionById = async (session_id) => {
+const express = require('express');
+const router = express.Router();
+const getSessionByIdController = require('@controllers/v1/getSessionById')
+router.get('/session/:Id', async (req, res, next) => {
     try {
-        const session = await SessionData.findOne({ session_id: session_id });
-        if (session === null) {
-            return {
-              status: 404,
-              message: 'SESSION_NOT_FOUND',
-            };
-          }
-        return session;
-        
+        const result = await getSessionByIdController.getSessionById(req, res, next);
     } catch (error) {
-        throw new Error('Failed to get session');
+        next(error)
     }
-};
-module.exports = {
-    getSessionById
-};
+});
+module.exports = router;
