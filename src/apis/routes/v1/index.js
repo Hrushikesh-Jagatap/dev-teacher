@@ -30,7 +30,7 @@ const splash = require('./splashApi')
 
 // const TeacherStudent = require('./TeacherStudent');
 
-const Notification = require('./Notification');
+// const Notification = require('./Notification');
 
 const CreateBatch = require('./CreateBatch') 
 
