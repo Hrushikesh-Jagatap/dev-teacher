@@ -28,7 +28,7 @@ const getSessionById = require('./getSessionById')
 
 const splash = require('./splashApi') 
 
-const TeacherStudent = require('./TeacherStudent');
+// const TeacherStudent = require('./TeacherStudent');
 
 const Notification = require('./Notification');
 
