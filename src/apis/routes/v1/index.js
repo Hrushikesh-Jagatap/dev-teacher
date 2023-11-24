@@ -28,7 +28,7 @@ const getSessionById = require('./getSessionById')
 
 const splash = require('./splashApi') 
 
-// const TeacherStudent = require('./TeacherStudent');
+const TeacherStudent = require('./TeacherStudent');
 
 // const Notification = require('./Notification');
 
@@ -82,7 +82,7 @@ router.use('/', getSessionById);
 
 router.use('/', completeSession);
 
-//router.use('/', TeacherStudent);
+router.use('/', TeacherStudent);
 
 router.use('/', profileCompleted);
 
