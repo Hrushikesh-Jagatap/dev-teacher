@@ -83,7 +83,7 @@ router.use('/', getSessionById);
 router.use('/', completeSession);
 
 //
-// router.use('/', TeacherStudent);
+ router.use('/', TeacherStudent);
 
 router.use('/', profileCompleted);
 
