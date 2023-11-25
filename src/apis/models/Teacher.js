@@ -355,7 +355,11 @@ const teacherSchema = new mongoose.Schema({
  default:false,
   
  
-  }
+  },
+  isadmin:{
+    type:Boolean,
+    default:false,
+  },
 
 }, { timestamps: { createdAt: true, updatedAt: true }, versionKey: false });
 
